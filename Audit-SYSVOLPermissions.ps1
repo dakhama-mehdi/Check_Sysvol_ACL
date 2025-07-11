@@ -19,6 +19,21 @@
     2025-06-10
 #>
 
+function Show-HardenSysvolBanner {
+   param (
+        [string]$BannerColor
+    )
+Write-Host ""
+Write-Host "╔═════════════════════════════════════════════════════╗" -ForegroundColor $Bannercolor
+Write-Host "║ Welcome to Check_Sysvol_ACL v1.0 ║" -ForegroundColor $Bannercolor
+Write-Host "║ Auditing Active Directory SYSVOL & GPOs ACL ║" -ForegroundColor $Bannercolor
+Write-Host "║ Developed by HardenAD Community ║" -ForegroundColor $Bannercolor
+Write-Host "╚═════════════════════════════════════════════════════╝" -ForegroundColor $Bannercolor
+Write-Host ""
+}
+
+Show-HardenSysvolBanner -BannerColor $Bannercolor
+
 Write-Host "⏳ Start analyse : $(Get-Date -Format 'yyyy-MM-dd HH:mm:ss')" -ForegroundColor Green
 $startTime = Get-Date
 
