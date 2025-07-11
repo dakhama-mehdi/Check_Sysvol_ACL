@@ -19,6 +19,8 @@
     2025-06-10
 #>
 
+$Bannercolor = "Yellow"
+
 function Show-HardenSysvolBanner {
    param (
         [string]$BannerColor
