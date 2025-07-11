@@ -1,4 +1,5 @@
-﻿<#
+
+<#
 .SYNOPSIS
     Audits and reports unauthorized NTFS permissions on SYSVOL files.
 
@@ -16,7 +17,7 @@
     1.0
 
 .LAST UPDATED
-    2025-06-10
+    2025-07-10
 #>
 
 $Bannercolor = "Yellow"
@@ -27,9 +28,9 @@ function Show-HardenSysvolBanner {
     )
 Write-Host ""
 Write-Host "╔═════════════════════════════════════════════════════╗" -ForegroundColor $Bannercolor
-Write-Host "║ Welcome to Check_Sysvol_ACL v1.0 ║" -ForegroundColor $Bannercolor
-Write-Host "║ Auditing Active Directory SYSVOL & GPOs ACL ║" -ForegroundColor $Bannercolor
-Write-Host "║ Developed by HardenAD Community ║" -ForegroundColor $Bannercolor
+Write-Host "║ Welcome to Check_Sysvol_ACL v1.0                    ║" -ForegroundColor $Bannercolor
+Write-Host "║ Auditing Active Directory SYSVOL & GPOs ACL         ║" -ForegroundColor $Bannercolor
+Write-Host "║ Developed by HardenAD Community                     ║" -ForegroundColor $Bannercolor
 Write-Host "╚═════════════════════════════════════════════════════╝" -ForegroundColor $Bannercolor
 Write-Host ""
 }
@@ -74,12 +75,12 @@ $droitsAutorises = @(
 
  Get-ChildItem -Path \\$dnsDomain\sysvol\$dnsDomain -Recurse -Force -ErrorAction SilentlyContinue | ForEach-Object {
 
-$fichier = $_.FullName
+$file = $_.FullName
  
   try {
-        $acl = Get-Acl -Path $fichier #-ErrorAction Stop
+        $acl = Get-Acl -Path $file #-ErrorAction Stop
     } catch {
-        Write-Warning "Impossible de lire les ACL de : $fichier"
+        Write-Warning "Cannot read ACL of : $file"
         return
     }
 
@@ -88,7 +89,7 @@ $acl.Access | Where-Object {
     $Trustgroups -notcontains $_.IdentityReference.Value -and
     $_.FileSystemRights -notin $droitsAutorises
 } | ForEach-Object {
-    Write-Host "⚠️ ALERT: $($_.IdentityReference) has  '$($_.FileSystemRights)' on $fichier" -ForegroundColor Cyan
+    Write-Host "⚠️ Warning: $($_.IdentityReference) has '$($_.FileSystemRights)' on $file" -ForegroundColor Cyan
 }
 }
 
