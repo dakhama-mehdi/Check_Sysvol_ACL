@@ -1,4 +1,4 @@
-
+﻿
 <#
 .SYNOPSIS
     Audits and reports unauthorized NTFS permissions on SYSVOL files.
@@ -37,7 +37,7 @@ Write-Host ""
 
 Show-HardenSysvolBanner -BannerColor $Bannercolor
 
-Write-Host "⏳ Start analyse : $(Get-Date -Format 'yyyy-MM-dd HH:mm:ss')" -ForegroundColor Green
+Write-Host "⏳ Start analyse Sysvol at : $(Get-Date -Format 'yyyy-MM-dd HH:mm:ss')" -ForegroundColor Green
 $startTime = Get-Date
 
 #List domain
