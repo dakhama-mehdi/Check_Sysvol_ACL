@@ -73,12 +73,16 @@ $droitsAutorises = @(
     'ReadAttributes, ReadExtendedAttributes, ReadPermissions, Synchronize'
 )
 
+$Scanfile  = 0
+$Foundfile = 0
+
  Get-ChildItem -Path \\$dnsDomain\sysvol\$dnsDomain -Recurse -Force -ErrorAction SilentlyContinue | ForEach-Object {
 
 $file = $_.FullName
  
   try {
         $acl = Get-Acl -Path $file #-ErrorAction Stop
+		$Scanfile++
     } catch {
         Write-Warning "Cannot read ACL of : $file"
         return
@@ -90,6 +94,7 @@ $acl.Access | Where-Object {
     $_.FileSystemRights -notin $droitsAutorises
 } | ForEach-Object {
     Write-Host "⚠️ Warning: $($_.IdentityReference) has '$($_.FileSystemRights)' on $file" -ForegroundColor Cyan
+	$Foundfile++
 }
 }
 
@@ -97,4 +102,4 @@ $acl.Access | Where-Object {
 $endTime = Get-Date
 $elapsed = $endTime - $startTime
 Write-Host "✅ End Analyse at : $($endTime.ToString('yyyy-MM-dd HH:mm:ss'))" -ForegroundColor Green
-Write-Host "⏱️ Time : $($elapsed.Hours)h $($elapsed.Minutes)m $($elapsed.Seconds)s" -ForegroundColor Yellow
+Write-Host ("Scanned files: {0} - Incorrect ACL found: {1} - Elapsed: {2}h {3}m {4}s" -f $Scanfile, $Foundfile, $elapsed.Hours, $elapsed.Minutes, $elapsed.Seconds) -ForegroundColor Yellow
