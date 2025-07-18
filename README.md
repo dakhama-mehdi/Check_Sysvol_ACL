@@ -4,6 +4,7 @@
 **⭐ Complements [Harden-Sysvol](https://github.com/username/Harden-Sysvol) for a complete Active Directory GPO security audit.***
 
 ---
+![Image](https://github.com/user-attachments/assets/2c0772a9-7011-4679-be7f-68402fdf1189)
 
 📂 **Purpose**  
 This project aims to **join and strengthen** the security posture enforced by [Harden-Sysvol](https://github.com/username/Harden-Sysvol) by focusing on **access control (ACL) auditing** inside the SYSVOL share.
