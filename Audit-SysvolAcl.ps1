@@ -37,7 +37,7 @@ Write-Host ""
 
 Show-HardenSysvolBanner -BannerColor $Bannercolor
 
-Write-Host "⏳ Start analyse Sysvol at : $(Get-Date -Format 'yyyy-MM-dd HH:mm:ss')" -ForegroundColor Green
+Write-Host " Start analyse Sysvol at : $(Get-Date -Format 'yyyy-MM-dd HH:mm:ss')" -ForegroundColor Green
 $startTime = Get-Date
 
 #List domain
@@ -93,7 +93,7 @@ $acl.Access | Where-Object {
     $Trustgroups -notcontains $_.IdentityReference.Value -and
     $_.FileSystemRights -notin $droitsAutorises
 } | ForEach-Object {
-    Write-Host "⚠️ Warning: $($_.IdentityReference) has '$($_.FileSystemRights)' on $file" -ForegroundColor Cyan
+    Write-Host " Warning: $($_.IdentityReference) has '$($_.FileSystemRights)' on $file" -ForegroundColor Cyan
 	$Foundfile++
 }
 }
