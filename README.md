@@ -26,7 +26,7 @@ This project aims to **join and strengthen** the security posture enforced by [H
 - 🖥️ **Domain-joined Windows machine
 - 👤 A **standard domain user account** (no admin rights required)
 
-> ✅ Download the Script PS1 in the section and run it from ISE or Powershell
+> ✅ Download or Copy the Script PS1 in the section and run it from ISE or Powershell
 
 🧰 **Use Cases**
 - GPO security assessment
