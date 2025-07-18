@@ -1,4 +1,4 @@
-# 🛡️ Audit-SYSVOLPermissions
+# 🛡️ Audit-SYSVOL_ACL
 
 **🔍 PowerShell script to detect unauthorized NTFS permissions on SYSVOL.**  
 **⭐ Complements [Harden-Sysvol](https://github.com/username/Harden-Sysvol) for a complete Active Directory GPO security audit.***
