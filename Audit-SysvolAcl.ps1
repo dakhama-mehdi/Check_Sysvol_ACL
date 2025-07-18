@@ -101,5 +101,5 @@ $acl.Access | Where-Object {
 
 $endTime = Get-Date
 $elapsed = $endTime - $startTime
-Write-Host " End Analyse at : $($endTime.ToString('yyyy-MM-dd HH:mm:ss'))" -ForegroundColor Green
+Write-Host "End Analyse at : $($endTime.ToString('yyyy-MM-dd HH:mm:ss'))" -ForegroundColor Green
 Write-Host ("Scanned files: {0} - Incorrect ACL found: {1} - Elapsed: {2}h {3}m {4}s" -f $Scanfile, $Foundfile, $elapsed.Hours, $elapsed.Minutes, $elapsed.Seconds) -ForegroundColor Yellow
